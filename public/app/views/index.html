@@ -4,11 +4,50 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>User Story</title>
+	<base href="/">
+	<!--libraries-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.5.7/angular-route.min.js"></script>
+	<!-- services -->
+	<script src="app/services/authService.js"></script>
+	<script src="app/services/userService.js"></script>
+	<!-- controllers -->
+	<script src="app/controllers/mainCtrl.js"></script>
+	<script src="app/controllers/userCtrl.js"></script>
+	<!-- -->
+	<script src="app/app.routes.js"></script>
 	<script src="app/app.js"></script>
+
 </head>
-<body>
-	<h1>Testing xxxx {{ 2 + 2 }}</h1>
+<body ng-controller="MainController as main">
+
+	<header>
+		
+		<div class="navbar navbar-defualt">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="/" class="navbar-brand">
+						<span class="glyphicon glyphicon-book"></span> User Story
+					</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="/users"></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li ng-if='!main.loggedIn'> <a href="/login">Login</a> </li>
+					<li ng-if='!main.loggedIn'> <a href="/signup">Signup</a></li>
+					<li ng-if='main.loggedIn'> <a href="#">Hello {{main.user.username}}</a></li>
+					<li ng-if='main.loggedIn'><a href="#" ng-click="main.doLogout()">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+
+	</header>
+	
+	<main class="container">
+		<div ng-view ></div>
+	</main>
+	
 </body>
 </html>
