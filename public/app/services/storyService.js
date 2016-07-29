@@ -4,6 +4,12 @@ angular.module('storyService', [])
 
 	var storyFactory = {};
 
+	storyFactory.allStories = function(){
+
+		return $http.get('/api/all_stories');
+
+	}
+
 	storyFactory.create = function( storyData ) {
 
 		$http.post('/api', storyData );

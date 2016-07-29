@@ -24,6 +24,24 @@ module.exports = function( app, express, io ) {
 
 	var api = express.Router();
 
+
+	api.get('/all_stories', function( req, res ) {
+
+		Story.find({}, function( err, stories) {
+
+			console.log( 'stories', stories.length );
+
+			if( err ) {
+				res.send( err );
+				return;
+			}
+
+			res.json( stories );
+
+		})
+
+	});
+
 	api.post('/signup', function( req, res ) {
 
 		var user = new User({
