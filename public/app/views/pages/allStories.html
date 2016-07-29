@@ -12,7 +12,7 @@
 
 				<div class="panel-heading">Your Stories</div>
 				
-				<div class="panel-body" ng-repeat="each in story.stories track by $index">
+				<div class="panel-body" ng-repeat="each in story.stories | reverse ">
 					
 					<p>{{each.content}}</p>
 
